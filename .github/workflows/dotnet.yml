@@ -11,13 +11,13 @@ on:
 
 jobs:
   build:
-
+    defaults:
+      run:
+        working-directory: backend/Contacts
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Go to backend folder
-      run: cd backend/Contacts
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
