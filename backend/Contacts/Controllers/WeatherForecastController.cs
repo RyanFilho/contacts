@@ -6,7 +6,7 @@ namespace Contacts.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("[controller]")]
+[Route("/")]
 [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 public class WeatherForecastController : ControllerBase
 {
