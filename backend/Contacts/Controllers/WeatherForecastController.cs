@@ -4,9 +4,8 @@ using Microsoft.Identity.Web.Resource;
 
 namespace Contacts.Controllers;
 
-[Authorize]
 [ApiController]
-[Route("/")]
+[Route("/WeatherForecast")]
 [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
 public class WeatherForecastController : ControllerBase
 {
