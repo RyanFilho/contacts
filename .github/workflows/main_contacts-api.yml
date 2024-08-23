@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - contacts-api
+name: Build and deploy - contacts-api
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend/Contacts
+        working-directory: backend/Presentation
         
     steps:
       - uses: actions/checkout@v4
