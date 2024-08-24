@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend/Presentation
+        working-directory: backend/API
         
     steps:
       - uses: actions/checkout@v4
