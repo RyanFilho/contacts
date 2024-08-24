@@ -9,7 +9,7 @@ public partial class Contact
 
     public int UserId { get; set; }
 
-    public decimal Name { get; set; }
+    public string Name { get; set; }
 
     public required string PhoneNumber { get; set; }
 
