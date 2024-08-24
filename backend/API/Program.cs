@@ -95,7 +95,7 @@ namespace ContactsApi
                         }, options => { configuration.Bind("AzureAd", options); });
 
                 // The following flag can be used to get more descriptive errors in development environments
-                IdentityModelEventSource.ShowPII = false;
+                IdentityModelEventSource.ShowPII = true;
 
 
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -118,7 +118,10 @@ namespace ContactsApi
                );
 
                 builder.Services.AddScoped<IUserRepository, UserRepository>();
+                builder.Services.AddScoped<IContactRepository, ContactRepository>();
+
                 builder.Services.AddScoped<IUserService, UserService>();
+                builder.Services.AddScoped<IContactService, ContactService>();
 
                 builder.Services.AddTransient<RequestBodyLoggingMiddleware>();
                 builder.Services.AddTransient<ResponseBodyLoggingMiddleware>();
@@ -151,11 +154,11 @@ namespace ContactsApi
 
                 // Configure the HTTP request pipeline.
                 //if (app.Environment.IsDevelopment())
-                {
+                // {
                     app.UseDeveloperExceptionPage();
                     app.UseSwagger();
                     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContactsApi API v1"));
-                }
+                // }
 
 
 
