@@ -1,6 +1,6 @@
 ﻿using Microsoft.ApplicationInsights.DataContracts;
 
-namespace Presentation.Middlewares
+namespace API.Middlewares
 {
     public class ResponseBodyLoggingMiddleware : IMiddleware
     {

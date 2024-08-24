@@ -2,7 +2,7 @@
 using Core.Entities;
 using Core.Models;
 
-namespace Presentation
+namespace API
 {
     public class MappingProfile : Profile
     {

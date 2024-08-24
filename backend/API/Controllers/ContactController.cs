@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
-namespace Presentation.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

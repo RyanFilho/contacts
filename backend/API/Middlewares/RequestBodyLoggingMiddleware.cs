@@ -2,7 +2,7 @@
 using Serilog;
 using System.Text;
 
-namespace Presentation.Middlewares
+namespace API.Middlewares
 {
     public class RequestBodyLoggingMiddleware : IMiddleware
     {

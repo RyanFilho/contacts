@@ -1,8 +1,8 @@
 using Core.Entities;
 using Data;
 using Service;
-using Presentation.Common;
-using Presentation.Middlewares;
+using API.Common;
+using API.Middlewares;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;

@@ -53,7 +53,4 @@ namespace Service
             await _contactRepository.DeleteContactAsync(contactId);
         }
     }
-
-
-
 }
