@@ -31,7 +31,7 @@ import { ContactService } from './service/contact.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Azure AD B2C | .Net Core 8 & Angular 18 | Sample App | MSAL V3';
+  title = 'Contacts Management ';
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();

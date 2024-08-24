@@ -10,19 +10,20 @@ const serverUrl='https://localhost:44351/api';
 
 // The list of file replacements can be found in `angular.json`.
 export const environment: EnvironmentConfiguration = {
-  env_name: 'dev',
+  env_name: 'prod',
   production: true,
   apiUrl: serverUrl,
   apiEndpoints: {
     userProfile:'user-profiles'
   },
-  adb2cConfig: {
-    clientId: 'f9d96116-bd30-4770-b15a-f199417bc3cf',
-    readScopeUrl: 'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Read',
-    writeScopeUrl: 'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Write',
+  adConfig: {
+    clientId: '67c3e590-5483-44c4-be7c-045e8d75c650',
+    tenantId: '08c7ece1-e65a-4cf9-8e27-24d35b054769',
+    readScopeUrl: 'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Write',
+    writeScopeUrl: 'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Read',
     scopeUrls:[
-      'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Read',
-      'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Write'
+      'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Write',
+      'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Read'
     ],
     apiEndpointUrl: 'https://localhost:44351/api'
   },
