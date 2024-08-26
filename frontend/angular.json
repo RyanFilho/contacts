@@ -16,7 +16,6 @@
             "outputPath": "dist/angular18-features",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -24,8 +23,14 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"],
-            "scripts": []
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [],
+            "polyfills": [
+              "@angular/localize/init"
+            ]
           },
           "configurations": {
             "production": {
@@ -75,7 +80,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

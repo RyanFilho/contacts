@@ -8,7 +8,6 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class ContactController : ControllerBase
     {
         private readonly IContactService _contactService;

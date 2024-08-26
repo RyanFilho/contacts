@@ -41,29 +41,6 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
 }
 
-export const b2cPolicies = {
-  names: {
-    signUpSignIn: 'B2C_1_susi',
-    resetPassword: 'B2C_1_password_reset',
-    editProfile: 'B2C_1_profile_edit',
-  },
-  authorities: {
-    signUpSignIn: {
-      authority:
-        'https://karthiktechworld.b2clogin.com/karthiktechworld.onmicrosoft.com/B2C_1_susi',
-    },
-    resetPassword: {
-      authority:
-        'https://karthiktechworld.b2clogin.com/karthiktechworld.onmicrosoft.com/B2C_1_password_reset',
-    },
-    editProfile: {
-      authority:
-        'https://karthiktechworld.b2clogin.com/karthiktechworld.onmicrosoft.com/B2C_1_profile_edit',
-    },
-  },
-  authorityDomain: 'karthiktechworld.b2clogin.com',
-};
-
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {

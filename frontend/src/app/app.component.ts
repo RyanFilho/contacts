@@ -19,7 +19,7 @@ import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { LoginService } from './service/login.service';
-import { Claim } from './models/claim';
+import { ContactModel } from './models/contact.model';
 import { ContactService } from './service/contact.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
-  claims:Claim[]=[];
+  contacts:ContactModel[]=[];
   
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
@@ -67,11 +67,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.setLoginDisplay();
         }
       });
-
-        //To subscribe for claims
-        this.loginService.claims$.subscribe((claim: any) => {
-          this.claims = claim;
-        });
 
     this.msalBroadcastService.inProgress$
       .pipe(
@@ -149,6 +144,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getContacts(){
-    this.contactService.getContacts(4).subscribe((s: any) => console.log('Contacts', s));
+    this.contacts = [];
+    this.contactService.getContacts(1).subscribe((newContact: any) => {
+      this.contacts.push(newContact);
+    });
   }
 }
