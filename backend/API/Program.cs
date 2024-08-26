@@ -22,12 +22,12 @@ namespace ContactsApi
         public static void Main(string[] args)
         {
             // Configure Serilog with the settings
-            Log.Logger = new LoggerConfiguration()
-            .WriteTo.Console()
-            .WriteTo.Debug()
-            .MinimumLevel.Information()
-            .Enrich.FromLogContext()
-            .CreateBootstrapLogger();
+            // Log.Logger = new LoggerConfiguration()
+            // .WriteTo.Console()
+            // .WriteTo.Debug()
+            // .MinimumLevel.Information()
+            // .Enrich.FromLogContext()
+            // .CreateBootstrapLogger();
 
             try
             {
