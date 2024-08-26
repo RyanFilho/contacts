@@ -29,6 +29,7 @@
             ],
             "scripts": [],
             "polyfills": [
+              "zone.js",
               "@angular/localize/init"
             ]
           },
