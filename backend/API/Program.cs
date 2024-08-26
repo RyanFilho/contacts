@@ -155,9 +155,14 @@ namespace ContactsApi
                 // Configure the HTTP request pipeline.
                 //if (app.Environment.IsDevelopment())
                 // {
-                    app.UseDeveloperExceptionPage();
-                    app.UseSwagger();
-                    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ContactsApi API v1"));
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "ContactsApi API v1");
+                    options.RoutePrefix = string.Empty;
+                });
+
                 // }
 
 
