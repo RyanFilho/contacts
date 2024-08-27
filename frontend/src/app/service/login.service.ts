@@ -17,6 +17,7 @@ export class LoginService {
                 filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
             )
             .subscribe((result: EventMessage) => {
+                console.log("login success!!");
                 const payload = result.payload as AuthenticationResult;
                 this.authService.instance.setActiveAccount(payload.account);
                 this.createNewUser();
