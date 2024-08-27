@@ -8,9 +8,7 @@ import {
   MsalGuardConfiguration,
 } from '@azure/msal-angular';
 import {
-  AuthenticationResult,
   InteractionStatus,
-  PopupRequest,
   RedirectRequest,
   EventMessage,
   EventType,
@@ -18,6 +16,7 @@ import {
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { LoginService } from './service/login.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -35,7 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService,    
+    private msalBroadcastService: MsalBroadcastService,
+    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
+        this.loginService.createNewUser();
       });
   }
 

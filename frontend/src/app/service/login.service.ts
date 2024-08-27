@@ -19,8 +19,7 @@ export class LoginService {
             .subscribe((result: EventMessage) => {
                 console.log("login success!!");
                 const payload = result.payload as AuthenticationResult;
-                this.authService.instance.setActiveAccount(payload.account);
-                this.createNewUser();
+                this.authService.instance.setActiveAccount(payload.account);                
             });
 
         this.msalBroadcastService.inProgress$
@@ -28,10 +27,9 @@ export class LoginService {
                 filter((status: InteractionStatus) => status === InteractionStatus.None)
             )
             .subscribe(() => {
-                this.setLoginDisplay();
+                this.setLoginDisplay();                
             });
     }
-
 
     setLoginDisplay() {
         this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
