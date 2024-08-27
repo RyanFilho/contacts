@@ -56,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
           window.location.pathname = '/';
         } else {
           this.setLoginDisplay();
+          this.loginService.createNewUser();
         }
       });
 
