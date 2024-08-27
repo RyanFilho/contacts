@@ -1,7 +1,18 @@
-import { CanActivateFn } from '@angular/router';
+import { inject, Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { MsalService } from '@azure/msal-angular'
+import { Observable } from 'rxjs';
 
-export const maslGuard: CanActivateFn = (route, state) => {
-  MsalService
-  return true;
-};
+@Injectable({ providedIn: 'root' })
+export class maslGuard implements CanActivate {
+  constructor(private authService: MsalService) { }
+  private router = inject(Router);
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.authService.instance.getActiveAccount() == null) {
+      return this.router.navigateByUrl('/');
+    }
+    return true;
+  }
+}

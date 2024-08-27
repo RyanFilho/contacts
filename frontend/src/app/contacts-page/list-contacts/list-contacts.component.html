@@ -1,4 +1,4 @@
-@if (contacts) {      
+@if (contacts.length > 0) {      
   <table class="table table-striped">
     <thead>
       <tr>
@@ -20,6 +20,18 @@
     </tbody>
   </table>
   }
-  @else {
-    <h4>No contacts found!</h4>
+  @else {    
+    <table class="table table-bordered mt-4">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone Name</th>
+          <th scope="col">Creation Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <h6 class="mt-4">No contacts found!</h6>
+      </tbody>
+    </table>
   }

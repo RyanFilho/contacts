@@ -4,7 +4,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { maslGuard } from './masl.guard';
 
 export const routes: Routes = [
-  { path: 'home', component: HomePageComponent }, 
   { path: 'contacts', component: ContactsPageComponent, canActivate: [maslGuard] },
-  { path: '**', component: ContactsPageComponent }
+  { path: '**', component: HomePageComponent }
 ];

@@ -1,5 +1,16 @@
-<form class="form-inline my-4 my-lg-0">
-  <input class="form-control mr-sm-2" type="text" placeholder="Name" aria-label="Name">
-  <input class="form-control mr-sm-2" type="text" placeholder="Phone Number" aria-label="Phone Number">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+<form (keydown.enter)="$event.preventDefault()" ngSubmit="addContact(myForm.value, myForm.isValid)">
+  <div class="form-row row">
+    <div class="form-group col-2">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+    <div class="form-group col-2">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+    </div>
+    <div class="form-group col-2">
+      <br>
+      <input type="button" class="btn btn-primary" id="phoneNumber" value="Add Contact">
+    </div>
+  </div>
 </form>
