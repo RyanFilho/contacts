@@ -1,0 +1,25 @@
+@if (contacts) {      
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Name</th>
+        <th scope="col">Creation Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (contact of contacts; track contact.name;) {
+        <tr>
+          <th scope="row">{{ contact.contactId }}</th>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.phoneNumber }}</td>
+          <td>{{ contact.saveDate }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  }
+  @else {
+    <h4>No contacts found!</h4>
+  }

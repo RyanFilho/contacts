@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MsalService } from '@azure/msal-angular';
 import { ContactService } from '../service/contact.service';
 import { ContactModel } from '../models/contact.model';
+import { ListContactsComponent } from "./list-contacts/list-contacts.component";
+import { AddContactsComponent } from "./add-contacts/add-contacts.component";
 
 @Component({
-    selector: 'app-contacts-page',
+    selector: 'contacts-page',
     standalone: true,
-    imports: [],
+    imports: [ListContactsComponent, AddContactsComponent],
     templateUrl: './contacts-page.component.html',
     styleUrl: './contacts-page.component.css',
 })
