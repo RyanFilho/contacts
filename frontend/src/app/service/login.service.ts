@@ -44,14 +44,18 @@ export class LoginService {
 
     createNewUser() {
         const activeAccount = this.authService.instance.getActiveAccount();
-        if (activeAccount == null || activeAccount.idToken == null || activeAccount.name == null || activeAccount.username == null) return;
-        
+        const adObjId = activeAccount?.idTokenClaims?.oid;
+        if (adObjId == undefined) {
+            console.log("It was possible to found the user oid!", activeAccount)
+            return;
+        }
+
         const currentUser = new UserModel(
-            activeAccount.name,
-            activeAccount.username,
-            activeAccount.idToken,
+            activeAccount?.name || '',
+            activeAccount?.username || '',
+            adObjId,
         );
-        
+
         this.http.post(`${this.apiUrl}`, currentUser);
-    }    
+    }
 }

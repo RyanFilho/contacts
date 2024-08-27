@@ -19,9 +19,10 @@ export class ContactsPageComponent implements OnInit {
 
     ngOnInit(): void {
         const activeUser = this.authService.instance.getActiveAccount();
-        if (activeUser?.idToken == null)
+        const adObjId = activeUser?.idTokenClaims?.oid;
+        if (adObjId == undefined)
             return;
-        this.contactService.getContacts(activeUser.idToken).subscribe((newContact: any) => {
+        this.contactService.getContacts(adObjId).subscribe((newContact: any) => {
             this.contacts.push(newContact);
         });
     }

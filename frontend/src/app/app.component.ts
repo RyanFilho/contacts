@@ -103,12 +103,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout(popup?: boolean) {
-    this.authService.logoutRedirect();
+  logout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {
     this._destroying$.next(undefined);
     this._destroying$.complete();
-  }  
+  }
+  
 }
