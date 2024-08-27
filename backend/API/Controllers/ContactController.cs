@@ -1,13 +1,13 @@
 ﻿using Core.Models;
 using Service;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Web.Resource;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    // TODO: Add API Authentication and Authorization
+    // [Authorize]
     public class ContactController : ControllerBase
     {
         private readonly IContactService _contactService;
@@ -20,7 +20,6 @@ namespace API.Controllers
         [HttpGet("{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ContactModel>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes:Read")]
         public async Task<ActionResult<IEnumerable<ContactModel>>> GetContactsByUserId(int userId)
         {
             var contacts = await _contactService.GetContactsByUserIdAsync(userId);
@@ -30,7 +29,6 @@ namespace API.Controllers
         [HttpGet("{userId}/{contactId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ContactModel))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes:Read")]
         public async Task<ActionResult<ContactModel>> GetContactById(int userId, int contactId)
         {
             var contact = await _contactService.GetContactByIdAsync(contactId);
@@ -44,7 +42,6 @@ namespace API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ContactModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes:Write")]
         public async Task<ActionResult<ContactModel>> AddContact(ContactModel contact)
         {
             await _contactService.AddContactAsync(contact);
@@ -54,7 +51,6 @@ namespace API.Controllers
         [HttpPut("{contactId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes:Write")]
         public async Task<IActionResult> UpdateContact(int contactId, ContactModel contact)
         {
             if (contactId != contact.ContactId)
@@ -69,7 +65,6 @@ namespace API.Controllers
         [HttpDelete("{contactId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes:Write")]
         public async Task<IActionResult> DeleteContact(int contactId)
         {
             await _contactService.DeleteContactAsync(contactId);

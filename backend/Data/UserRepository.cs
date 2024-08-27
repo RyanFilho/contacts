@@ -18,6 +18,11 @@ namespace Data
             return await _context.UserProfiles.FindAsync(userId);
         }
 
+        public async Task<UserProfile> GetUserByAdObjIdAsync(string adObjId)
+        {
+            return await _context.UserProfiles.FirstOrDefaultAsync((user) => user.AdObjId == adObjId);
+        }
+
         public async Task AddUserAsync(UserProfile user)
         {
             _context.UserProfiles.Add(user);

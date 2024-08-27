@@ -8,6 +8,7 @@ namespace Data
         Task AddUserAsync(UserProfile user);
         Task UpdateUserAsync(UserProfile user);
         Task DeleteUserAsync(int userId);
+        Task<UserProfile> GetUserByAdObjIdAsync(string adObjId);
     }
 
 }

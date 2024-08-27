@@ -20,6 +20,12 @@ namespace Service
             return user != null ? MapToUserProfileModel(user) : null;
         }
 
+        public async Task<UserProfileModel> GetUserByAdObjIdAsync(string adObjId)
+        {
+            var user = await _userRepository.GetUserByAdObjIdAsync(adObjId);
+            return user != null ? MapToUserProfileModel(user) : null;
+        }
+
         public async Task AddUserAsync(UserProfileModel userModel)
         {
             var user = MapToUserProfileEntity(userModel);
