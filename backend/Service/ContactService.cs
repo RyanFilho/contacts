@@ -12,6 +12,7 @@ namespace Service
         Task AddContactAsync(ContactModel contact);
         Task UpdateContactAsync(ContactModel contact);
         Task DeleteContactAsync(int contactId);
+        Task<IEnumerable<ContactModel>> GetContactsByAdObjIdAsync(string asObjId);
     }
     public class ContactService : IContactService
     {
@@ -27,6 +28,12 @@ namespace Service
         public async Task<IEnumerable<ContactModel>> GetContactsByUserIdAsync(int userId)
         {
             var contacts = await _contactRepository.GetContactsByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<ContactModel>>(contacts);
+        }
+
+        public async Task<IEnumerable<ContactModel>> GetContactsByAdObjIdAsync(string asObjId)
+        {
+            var contacts = await _contactRepository.GetContactsByAdObjIdAsync(asObjId);
             return _mapper.Map<IEnumerable<ContactModel>>(contacts);
         }
 

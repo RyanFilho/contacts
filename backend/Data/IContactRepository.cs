@@ -9,5 +9,6 @@ namespace Data
         Task AddContactAsync(Contact contact);
         Task UpdateContactAsync(Contact contact);
         Task DeleteContactAsync(int contactId);
+        Task<IEnumerable<Contact>> GetContactsByAdObjIdAsync(string adObjId);
     }
 }

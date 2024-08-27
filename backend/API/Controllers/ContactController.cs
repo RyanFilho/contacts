@@ -20,9 +20,9 @@ namespace API.Controllers
         [HttpGet("{userId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ContactModel>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<ContactModel>>> GetContactsByUserId(int userId)
+        public async Task<ActionResult<IEnumerable<ContactModel>>> GetContactsByAdObjIdAsync(string asObjId)
         {
-            var contacts = await _contactService.GetContactsByUserIdAsync(userId);
+            var contacts = await _contactService.GetContactsByAdObjIdAsync(asObjId);
             return Ok(contacts);
         }
 

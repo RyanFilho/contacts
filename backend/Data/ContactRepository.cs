@@ -19,6 +19,13 @@ namespace Data
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Contact>> GetContactsByAdObjIdAsync(string adObjId)
+        {
+            return await _context.Contacts
+                .Where(c => c.User.AdObjId == adObjId)
+                .ToListAsync();
+        }
+
         public async Task<Contact> GetContactByIdAsync(int contactId)
         {
             return await _context.Contacts.FindAsync(contactId);
@@ -46,6 +53,4 @@ namespace Data
             }
         }
     }
-
-
 }
