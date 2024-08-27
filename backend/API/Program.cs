@@ -160,7 +160,7 @@ namespace ContactsApi
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "ContactsApi API v1");
-                    options.RoutePrefix = string.Empty;
+                    // options.RoutePrefix = string.Empty;
                 });
 
                 // }
