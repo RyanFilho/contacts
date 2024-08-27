@@ -19,6 +19,7 @@ export class LoginService {
             .subscribe((result: EventMessage) => {
                 const payload = result.payload as AuthenticationResult;
                 this.authService.instance.setActiveAccount(payload.account);
+                this.createNewUser();
             });
 
         this.msalBroadcastService.inProgress$
