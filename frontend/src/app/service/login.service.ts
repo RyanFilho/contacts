@@ -8,7 +8,6 @@ import { filter } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class LoginService {
     loginDisplay = false;
-    displayedColumns: string[] = ['claim', 'value', 'description'];
 
     constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService) {
         this.msalBroadcastService.msalSubject$

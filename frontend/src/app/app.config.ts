@@ -47,8 +47,8 @@ export function MSALInstanceFactory(): IPublicClientApplication {
       clientId: environment.adConfig.clientId,
       authority: `https://login.microsoftonline.com/${environment.adConfig.tenantId}`,
       knownAuthorities: [`login.microsoftonline.com`],
-      redirectUri: '/',
-      postLogoutRedirectUri: '/',
+      redirectUri: 'https://white-tree-0a9d71610.5.azurestaticapps.net',
+      postLogoutRedirectUri: 'https://white-tree-0a9d71610.5.azurestaticapps.net',
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,

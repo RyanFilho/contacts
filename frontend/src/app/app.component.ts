@@ -25,13 +25,12 @@ import { ContactService } from './service/contact.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,
-    MsalModule,],
+  imports: [RouterOutlet, CommonModule, MsalModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Contacts Management ';
+  title = 'Contacts Management';
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
@@ -47,10 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authService.handleRedirectObservable().subscribe();
-    this.isIframe = window !== window.parent && !window.opener; // Remove this line to use Angular Universal
-
     this.setLoginDisplay();
-
     this.authService.instance.enableAccountStorageEvents(); // Optional - This will enable ACCOUNT_ADDED and ACCOUNT_REMOVED events emitted when a user logs in or out of another tab or window
     this.msalBroadcastService.msalSubject$
       .pipe(
@@ -61,6 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
         )
       )
       .subscribe((result: EventMessage) => {
+        console.log('EventMessage', result);
         if (this.authService.instance.getAllAccounts().length === 0) {
           window.location.pathname = '/';
         } else {

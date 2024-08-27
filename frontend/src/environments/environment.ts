@@ -10,7 +10,7 @@ export const environment: EnvironmentConfiguration = {
     userProfile:'user-profiles'
   },
   adConfig: {
-    clientId: 'api://08fdedab-dd1c-41a5-a199-fff663007ea5',
+    clientId: '67c3e590-5483-44c4-be7c-045e8d75c650',
     tenantId: '08c7ece1-e65a-4cf9-8e27-24d35b054769',
     readScopeUrl: 'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Write',
     writeScopeUrl: 'api://08fdedab-dd1c-41a5-a199-fff663007ea5/Contacts.Read',
