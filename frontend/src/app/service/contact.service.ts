@@ -1,4 +1,3 @@
-// src/app/services/credit-card.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,11 +9,11 @@ import { ContactModel } from '../models/contact.model';
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = `${environment.apiUrl}/Contact`; // Update with your API URL
+  private apiUrl = `${environment.apiUrl}/Contact`;
 
   constructor(private http: HttpClient) {}
 
-  getContacts(userId: number): Observable<ContactModel[]> {
+  getContacts(userId: string): Observable<ContactModel[]> {
     return this.http.get<ContactModel[]>(`${this.apiUrl}/${userId}`);
   }
 }

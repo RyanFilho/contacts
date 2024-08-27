@@ -18,10 +18,6 @@ import {
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { LoginService } from './service/login.service';
-import { ContactModel } from './models/contact.model';
-import { ContactService } from './service/contact.service';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -34,14 +30,12 @@ export class AppComponent implements OnInit, OnDestroy {
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
-  contacts:ContactModel[]=[];
+  
   
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService,
-    private loginService: LoginService,
-    private contactService: ContactService
+    private msalBroadcastService: MsalBroadcastService,    
   ) {}
 
   ngOnInit(): void {
@@ -109,41 +103,12 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  loginPopup() {
-    if (this.msalGuardConfig.authRequest) {
-      this.authService
-        .loginPopup({ ...this.msalGuardConfig.authRequest } as PopupRequest)
-        .subscribe((response: AuthenticationResult) => {
-          this.authService.instance.setActiveAccount(response.account);
-        });
-    } else {
-      this.authService
-        .loginPopup()
-        .subscribe((response: AuthenticationResult) => {
-          this.authService.instance.setActiveAccount(response.account);
-        });
-    }
-  }
-
   logout(popup?: boolean) {
-    if (popup) {
-      this.authService.logoutPopup({
-        mainWindowRedirectUri: '/',
-      });
-    } else {
-      this.authService.logoutRedirect();
-    }
+    this.authService.logoutRedirect();
   }
 
   ngOnDestroy(): void {
     this._destroying$.next(undefined);
     this._destroying$.complete();
-  }
-
-  getContacts(){
-    this.contacts = [];
-    this.contactService.getContacts(1).subscribe((newContact: any) => {
-      this.contacts.push(newContact);
-    });
-  }
+  }  
 }
